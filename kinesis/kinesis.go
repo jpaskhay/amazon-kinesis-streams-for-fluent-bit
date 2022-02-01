@@ -195,6 +195,7 @@ func newPutRecordsClient(roleARN string, awsRegion string, kinesisEndpoint strin
 		EndpointResolver:              endpoints.ResolverFunc(customResolverFn),
 		CredentialsChainVerboseErrors: aws.Bool(true),
 		HTTPClient:                    httpClient,
+		LogLevel: aws.LogLevel(aws.LogDebugWithRequestRetries | aws.LogDebugWithRequestErrors | aws.LogDebugWithHTTPBody),
 	}
 
 	sess, err := session.NewSession(baseConfig)
